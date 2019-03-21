@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<!-- require 引入 mock jquery 成功！ -->
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="hehe"></div>
+		<script src="require.js"></script>
+		<script type="text/javascript">
+				// 配置 Mock 路径
+				require.config({
+				  paths:{
+					'mock':'mock',
+					'jquery':'jquery-1.11.0.min'
+				  }
+				})
+				// 加载 Mock
+				require(['mock','jquery'], function(Mock){
+					// 使用 Mock
+					var data = Mock.mock({
+						'list|1-10': [{
+							'id|+1': 1
+						}]
+					});
+					console.log(JSON.stringify(data, null, 4))
+					$("#hehe").text(JSON.stringify(data, null, 4));
+				})
+		</script>
+	</body>
+</html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<!-- require 引入 mock jquery 成功！ -->
+	<!-- 使用mock模拟后台成功 -->
+	<!-- 参考链接 -->
+	<!-- https://www.jianshu.com/p/8453b045544f -->
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -18,14 +20,24 @@
 				})
 				// 加载 Mock
 				require(['mock','jquery'], function(Mock){
-					// 使用 Mock
-					var data = Mock.mock({
-						'list|1-10': [{
-							'id|+1': 1
+					//模拟后台
+					Mock.mock('http://api.com', {
+						"user|5-10": [{
+							'name': '@cname',   //中文名称
+							'age|1-100': 100,   //100以内随机整数
+							'birthday': '@date("yyyy-MM-dd")',  //日期
+							'city': '@city(true)'   //中国城市
 						}]
 					});
-					console.log(JSON.stringify(data, null, 4))
-					$("#hehe").text(JSON.stringify(data, null, 4));
+					//JQuery方式
+					$.ajax({
+						url: 'http://api.com',
+						dataType: 'json'
+					}).done(function(data, status, xhr) {
+						console.log(
+							JSON.stringify(data, null, 4)
+						)
+					});
 				})
 		</script>
 	</body>
