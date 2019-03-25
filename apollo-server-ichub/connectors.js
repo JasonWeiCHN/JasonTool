@@ -6,6 +6,9 @@ import faker from 'faker'; //随机数生成工具 类比 mockjs
 var id = 0;
 var tags = []; //模拟数据的容器
 
+var id_tabledata = 8;
+var id_headdata = 1;
+
 var walletHomeDatas = {
 	'1001': {
 		headdata: {
@@ -288,6 +291,39 @@ function addTag(type, label) {
 	});
 }
 
+//抛出方法 添加资产列表数据
+function addWalletTable(user_id,tokenname,totalasset,available_balance,frozen,lock,estimated,withdraws_flag,deposits_flag,icon_url) {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			let t = {
+				id: id_tabledata++,//这个应该后台自动生成
+				user_id,
+				tokenname, //币种
+				totalasset, //总额
+				available_balance, //可用余额
+				frozen, //冻结
+				lock, //锁仓
+				estimated, //资产估值
+				withdraws_flag,
+				deposits_flag,
+				icon_url,
+			};
+			walletHomeDatas[user_id].tabledata.push(t);
+			resolve(t);
+		}, 2000);
+	});
+}
+
+//抛出方法 修改资产总额
+function updateWalletHeader(user_id, total_cny) {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			walletHomeDatas[user_id].headdata.total_cny = total_cny;
+			resolve(walletHomeDatas[user_id].headdata);
+		}, 2000);
+	});
+}
+
 function fakeDelay(cb) { //cb 回调
 	return new Promise(resolve => {
 		setTimeout(() => {
@@ -297,8 +333,8 @@ function fakeDelay(cb) { //cb 回调
 }
 
 export default { //这个库在 schema.js 中被用到
-	getWalletHomeData(userid) {
-		return walletHomeDatas[userid];
+	getWalletHomeData(user_id) {
+		return walletHomeDatas[user_id];
 	},
 	getAssets() {
 		return assetlist;
@@ -323,4 +359,6 @@ export default { //这个库在 schema.js 中被用到
 		return tags[tags.length - 1];
 	},
 	addTag,
+	addWalletTable,
+	updateWalletHeader,
 };
