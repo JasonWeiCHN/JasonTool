@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Nav/>
-    <el-row>
+    <el-row class="box">
       <el-col :span="4">
         <div style="width: 1px;height: 1px"></div>
         <div v-bind:class="{ stick: isStick }" id="left">
@@ -9,23 +9,8 @@
         </div>
       </el-col>
       <el-col :span="16">
-        <div class="art-section" id="art-f-1" style="height: 500px;width: 100px;">
-          1F
-        </div>
-        <div class="art-section" id="art-f-2" style="height: 500px;width: 100px;">
-          2F
-        </div>
-        <div class="art-section" id="art-f-3" style="height: 500px;width: 100px;">
-          3F
-        </div>
-        <div class="art-section" id="art-f-4" style="height: 500px;width: 100px;">
-          4F
-        </div>
-        <div class="art-section" id="art-f-5" style="height: 500px;width: 100px;">
-          5F
-        </div>
-        <div class="art-section" id="art-f-6" style="height: 500px;width: 100px;">
-          6F
+        <div  v-for="i in 6" class="art-section" :key="i" :id="'art-f-'+i" style="height: 500px;width: 100px;">
+          {{i}}F 章节{{i}}
         </div>
       </el-col>
       <el-col :span="4">
@@ -112,7 +97,7 @@ export default class Home extends Vue {
   handleScroll(e: any){
     //此处将导航条的滚动存入scrolltop
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    if(scrollTop>60){ // 执行固定
+    if(scrollTop>60+40){ // 执行固定
       this.isStick = true;
     }else{ // 取消固定
       this.isStick = false;
@@ -144,6 +129,13 @@ export default class Home extends Vue {
 
   .fnow {
     color: greenyellow;
+  }
+
+  .box {
+    width: 100%;
+    max-width: 1400/16rem;
+    margin: 0 auto;
+    padding-top: 40/16rem;
   }
 </style>
 

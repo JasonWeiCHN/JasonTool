@@ -16,7 +16,8 @@
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",
@@ -29,6 +30,7 @@
     "@vue/cli-service": "^3.8.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
@@ -38,6 +40,7 @@
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",
     "typescript": "^3.4.3",
+    "vue-cli-plugin-axios": "^0.0.4",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.6.10"
   },

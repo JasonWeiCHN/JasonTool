@@ -6,17 +6,28 @@
     import { Component, Prop, Vue } from 'vue-property-decorator';
 
     @Component
-    export default class Nav extends Vue {
+    export default class DirectoryTree extends Vue {
         @Prop() private msg!: string;
 
         data = [{
-            label: '一级 1',
-            children: [{
-                label: '二级 1-1',
-                children: [{
-                    label: '三级 1-1-1'
-                }]
-            }]
+            label: '第一章:基础知识',
+            children: [
+                {
+                    label: '前端开发的演变',
+                },
+                {
+                    label: '初始化项目',
+                },
+                {
+                    label: '第一个组件',
+                },
+                {
+                    label: '使用Ant Design组件',
+                },
+                {
+                    label: '受控组件与非受控组件',
+                },
+            ]
         }, {
             label: '一级 2',
             children: [{
