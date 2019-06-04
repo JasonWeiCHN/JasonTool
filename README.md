@@ -9,3 +9,7 @@ deleteDeviceFileDemo-使用html5plus api 删除手机目录（plus.io.PRIVATE_DO
 apollo-server-ichub + hellocli <br>
 apollo-server-ichub 服务器 npm run dev <br>
 hellocli 客户端 http://localhost:8080/#/apollo1 <br>
+vue_element_layout1 
+实现了左右边栏滚动到指定位置时固定
+附加了一个锚点组件，自己写的，实现滚动时样式变化，点击时滚动到指定位置 
+<br>
